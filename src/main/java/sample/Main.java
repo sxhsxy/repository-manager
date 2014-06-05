@@ -1,22 +1,16 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        SampleWidget sampleWidget = new SampleWidget();
+        SampleView sampleView = new SampleView();
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(sampleWidget.getRoot(), 800, 600));
+        primaryStage.setScene(new Scene(sampleView.getRoot(), 800, 600));
         primaryStage.show();
     }
 

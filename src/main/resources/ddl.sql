@@ -1,15 +1,6 @@
-DROP TABLE supplier;
 DROP TABLE hibernate_sequence_table;
-
-CREATE TABLE supplier
-(
-    id bigint PRIMARY KEY,
-    name VARCHAR(128) NOT NULL UNIQUE ,
-    phone VARCHAR(128),
-    address VARCHAR (256)
-);
-
-
+DROP TABLE supplier;
+DROP TABLE customer;
 
 CREATE TABLE  hibernate_sequence_table (
   id bigserial NOT NULL,
@@ -18,3 +9,24 @@ CREATE TABLE  hibernate_sequence_table (
   PRIMARY KEY  (id)
 );
 
+CREATE TABLE supplier
+(
+    id bigint PRIMARY KEY,
+    name VARCHAR(128) NOT NULL UNIQUE ,
+    linkman VARCHAR(64),
+    tel VARCHAR(32),
+    fax VARCHAR(32),
+    email VARCHAR(256),
+    address VARCHAR(256)
+);
+
+CREATE TABLE customer
+(
+  id bigint PRIMARY KEY ,
+  name VARCHAR(128) NOT NULL UNIQUE ,
+  linkman VARCHAR (64),
+  tel VARCHAR (32),
+  fax VARCHAR (32),
+  email VARCHAR (256),
+  address VARCHAR (256)
+);

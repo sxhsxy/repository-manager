@@ -45,7 +45,7 @@ public class SampleController implements Initializable {
     private void editSelectedSupplier() {
         ObservableList<Supplier> selected = tableView1.getSelectionModel().getSelectedItems();
         for(Supplier supplier : selected) {
-            supplier.setPhone("12388889999");
+            supplier.setTel("12388889999");
         }
     }
 }

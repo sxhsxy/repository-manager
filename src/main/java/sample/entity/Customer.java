@@ -4,12 +4,13 @@ import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 
+
 /**
  * Created by xiaohu on 14-6-1.
  */
 @Entity
-@Table(name = "supplier")
-public class Supplier {
+@Table(name = "customer")
+public class Customer {
     private Long id;
     private final SimpleStringProperty name = new SimpleStringProperty("");
     private final SimpleStringProperty linkman =  new SimpleStringProperty();
@@ -19,16 +20,16 @@ public class Supplier {
     private final SimpleStringProperty address = new SimpleStringProperty("");
 
 
-    public Supplier() {
+    public Customer() {
     }
 
-    public Supplier(String name, String tel, String address) {
+    public Customer(String name, String tel, String address) {
         setName(name);
         setTel(tel);
         setAddress(address);
     }
 
-    public Supplier(String name, String linkman, String tel, String fax, String email, String address) {
+    public Customer(String name, String linkman, String tel, String fax, String email, String address) {
         setName(name);
         setLinkman(linkman);
         setTel(tel);
@@ -43,7 +44,7 @@ public class Supplier {
             table = "hibernate_sequence_table",
             pkColumnName = "sequence_name",
             valueColumnName = "next_val",
-            pkColumnValue = "supplier"
+            pkColumnValue = "customer"
     )
     @Column(name = "id")
     public Long getId() {
@@ -142,6 +143,5 @@ public class Supplier {
     public SimpleStringProperty emailProperty() {
         return email;
     }
-
 
 }

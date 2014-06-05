@@ -29,7 +29,7 @@
             </TableColumn>
             <TableColumn fx:id="phoneColumn" prefWidth="120.0" text="Phone">
                 <cellValueFactory>
-                    <PropertyValueFactory property="phone" />
+                    <PropertyValueFactory property="tel" />
                 </cellValueFactory>
             </TableColumn>
             <TableColumn fx:id="addressColumn" prefWidth="183.0" text="Address">
@@ -40,7 +40,7 @@
          </columns>
           <items>
               <FXCollections fx:factory="observableArrayList">
-                  <Supplier name="萧山奥兰多小镇" phone="13912345678" address="hz"/>
+                  <Supplier name="萧山奥兰多小镇" tel="13912345678" address="hz"/>
 
               </FXCollections>
           </items>

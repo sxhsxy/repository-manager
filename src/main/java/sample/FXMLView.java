@@ -7,12 +7,12 @@ import javafx.util.Callback;
 /**
  * Created by xiaohu on 14-6-3.
  */
-public abstract class FXMLWidget {
+public abstract class FXMLView {
 
-        public static final String DEFAULT_ENDING = "widget";
+        public static final String DEFAULT_ENDING = "view";
         protected FXMLLoader loader;
 
-        public FXMLWidget() {
+        public FXMLView() {
             this.init(getClass(), getFXMLName());
         }
 
