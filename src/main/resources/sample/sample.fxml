@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.collections.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import sample.entity.Supplier?>
+
+<VBox fx:controller="sample.SampleController" prefHeight="342.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+         <items>
+            <Button mnemonicParsing="false" text="New" />
+            <Button onAction="#editSelectedSupplier" mnemonicParsing="false" text="Edit" />
+            <Button mnemonicParsing="false" text="Delete" />
+         </items>
+      </ToolBar>
+      <TableView fx:id="tableView1" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" >
+
+         <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="160.0" text="Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="phoneColumn" prefWidth="120.0" text="Phone">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="addressColumn" prefWidth="183.0" text="Address">
+                <cellValueFactory>
+                    <PropertyValueFactory property="address" />
+                </cellValueFactory>
+            </TableColumn>
+         </columns>
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <Supplier name="萧山奥兰多小镇" phone="13912345678" address="hz"/>
+
+              </FXCollections>
+          </items>
+      </TableView>
+   </children>
+</VBox>

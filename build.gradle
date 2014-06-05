@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = 'sample.Main'
+apply from: 'http://dl.bintray.com/content/shemnon/javafx-gradle/0.4.0/javafx.plugin'
+javafx {
+    mainClass = 'sample.Main'
+}
+
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+repositories {
+    mavenLocal()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    mavenCentral()
+}
+ext {
+    springVersion = '4.0.0.RELEASE'
+    hibernateVersion = '4.3.0.Final'
+}
+dependencies {
+    compile(
+            'org.apache.shiro:shiro-spring:1.2.3',
+            'com.fasterxml.jackson.core:jackson-databind:2.3.3',
+            'org.springframework.data:spring-data-jpa:1.5.1.RELEASE',
+            "org.springframework:spring-context:${springVersion}",
+            "org.springframework:spring-webmvc:${springVersion}",
+            "org.springframework:spring-orm:${springVersion}",
+            "org.springframework:spring-test:${springVersion}",
+            "org.hibernate:hibernate-core:${hibernateVersion}",
+            "org.hibernate:hibernate-entitymanager:${hibernateVersion}",
+            'org.slf4j:slf4j-api:1.7.6',
+            'org.slf4j:slf4j-log4j12:1.7.6',
+            'log4j:log4j:1.2.17',
+            'javax.servlet:jstl:1.2',
+            'org.apache.taglibs:taglibs-standard:1.2.1'
+    )
+    runtime (
+            'org.postgresql:postgresql:9.3-1100-jdbc41'
+    )
+    testCompile (
+            "junit:junit:4.11"
+    )
+}
