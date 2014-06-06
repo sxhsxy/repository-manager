@@ -9,3 +9,4 @@ out
 gradle-app.setting
 target/
 *.sublime-workspace
+*.doc
