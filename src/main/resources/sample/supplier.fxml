@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<SplitPane fx:controller="sample.SupplierController" dividerPositions="0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="30.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="NEVER">
+               <children>
+                  <TextField HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="查找" HBox.hgrow="NEVER" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <TableView fx:id="tableView" onMouseClicked="#selectRow" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn prefWidth="156.0" text="名称">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="119.0" text="电话">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="tel" />
+                    </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+              <items>
+                  <Button fx:id="add" onAction="#addSupplier" mnemonicParsing="false" prefWidth="60.0" text="新增" />
+                  <Button fx:id="edit" onAction="#editSelectedSupplier" mnemonicParsing="false" prefWidth="60.0" text="修改" />
+                  <Button fx:id="delete" onAction="#deleteSelectedSupplier"  mnemonicParsing="false" prefWidth="60.0" text="删除" />
+              </items>
+            </ToolBar>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <TitledPane prefHeight="1000.0" prefWidth="1000" text="属性" VBox.vgrow="ALWAYS">
+               <content>
+                  <GridPane hgap="20.0" vgap="5.0">
+                    
+                     <children>
+                        <Label text="供应商名称：" />
+                        <Label text="联系人：" GridPane.rowIndex="1" />
+                         <Label text="电话：" GridPane.rowIndex="2" />
+                         <Label text="传真：" GridPane.rowIndex="3" />
+                         <Label text="电子邮箱：" GridPane.rowIndex="4" />
+                         <Label text="地址：" GridPane.rowIndex="5" />
+                        <TextField fx:id="name" GridPane.columnIndex="1" />
+                        <TextField fx:id="linkman" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                         <TextField fx:id="tel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                         <TextField fx:id="fax" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                         <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                         <TextField fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </GridPane>
+               </content></TitledPane>
+            <ToolBar minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+              <items>
+                <Button fx:id="cancel" mnemonicParsing="false" prefWidth="60.0" text="取消" />
+                  <Button fx:id="save" mnemonicParsing="false" prefWidth="60.0" text="保存" />
+              </items>
+            </ToolBar>
+         </children>
+      </VBox>
+  </items>
+</SplitPane>
