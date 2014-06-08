@@ -3,6 +3,7 @@ package sample.entity;
 import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by xiaohu on 14-6-1.
@@ -10,14 +11,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "supplier")
 public class Supplier {
-    private Long id;
     private final SimpleStringProperty name = new SimpleStringProperty("");
     private final SimpleStringProperty linkman =  new SimpleStringProperty();
     private final SimpleStringProperty tel = new SimpleStringProperty("");
     private final SimpleStringProperty fax = new SimpleStringProperty();
     private final SimpleStringProperty email = new SimpleStringProperty();
     private final SimpleStringProperty address = new SimpleStringProperty("");
-
+    private Long id;
+    private Collection<PurchaseRecord> purchaseRecords;
 
     public Supplier() {
     }
@@ -45,7 +46,7 @@ public class Supplier {
             valueColumnName = "next_val",
             pkColumnValue = "supplier"
     )
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
     public Long getId() {
         return id;
     }
@@ -55,7 +56,7 @@ public class Supplier {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 128, precision = 0)
     public String getName() {
         return name.get();
     }
@@ -70,7 +71,7 @@ public class Supplier {
     }
 
     @Basic
-    @Column(name = "address")
+    @Column(name = "address", nullable = true, insertable = true, updatable = true, length = 256, precision = 0)
     public String getAddress() {
         return address.get();
     }
@@ -85,7 +86,7 @@ public class Supplier {
     }
 
     @Basic
-    @Column(name = "linkman")
+    @Column(name = "linkman", nullable = true, insertable = true, updatable = true, length = 64, precision = 0)
     public String getLinkman() {
         return linkman.get();
     }
@@ -100,7 +101,7 @@ public class Supplier {
     }
 
     @Basic
-    @Column(name = "tel")
+    @Column(name = "tel", nullable = true, insertable = true, updatable = true, length = 32, precision = 0)
     public String getTel() {
         return this.tel.get();
     }
@@ -115,7 +116,7 @@ public class Supplier {
     }
 
     @Basic
-    @Column(name = "fax")
+    @Column(name = "fax", nullable = true, insertable = true, updatable = true, length = 32, precision = 0)
     public String getFax() {
         return this.fax.getName();
     }
@@ -128,8 +129,9 @@ public class Supplier {
     public SimpleStringProperty faxProperty() {
         return fax;
     }
+
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = true, insertable = true, updatable = true, length = 256, precision = 0)
     public String getEmail() {
         return this.email.get();
     }
@@ -143,5 +145,29 @@ public class Supplier {
         return email;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        Supplier supplier = (Supplier) o;
+
+        if (id != null ? !id.equals(supplier.id) : supplier.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @OneToMany(mappedBy = "supplier")
+    public Collection<PurchaseRecord> getPurchaseRecords() {
+        return purchaseRecords;
+    }
+
+    public void setPurchaseRecords(Collection<PurchaseRecord> purchaseRecords) {
+        this.purchaseRecords = purchaseRecords;
+    }
 }

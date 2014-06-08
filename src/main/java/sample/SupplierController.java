@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sample.entity.Supplier;
 import sample.repository.SupplierRepository;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -119,16 +120,21 @@ public class SupplierController implements Initializable {
                 editOne.setLinkman(linkman.getText());
                 editOne.setEmail(email.getText());
                 editOne.setAddress(address.getText());
-
+                if(editOne.getId() == null && supplierRepository.findByName(editOne.getName()) != null)
+                    throw new Exception("该名称已存在，请重新输入！");
                 supplierRepository.save(editOne);
                 editBox.setDisable(true);
                 if(!tableView.getItems().contains(editOne))
                     tableView.getItems().add(editOne);
             }
         } catch (StringIndexOutOfBoundsException e) {
+            /* TODO 解决controlsfx的Dialog乱码问题*/
             Dialogs.create().title("").message("输入名称有误，请重新输入！").showWarning();
         } catch (Exception e) {
-            new Dialog(null, "该名称已存在，请重新输入！").show();
+            Dialog dialog = new Dialog(null, "输入错误");
+            dialog.setContent(e.getMessage());
+            dialog.getActions().add(Dialog.Actions.OK);
+            dialog.show();
         }
     }
 
@@ -137,4 +143,8 @@ public class SupplierController implements Initializable {
         selectRow(null);
     }
 
+    public void search(ActionEvent actionEvent) {
+        /* TODO 列表搜索功能*/
+        throw new NotImplementedException();
+    }
 }

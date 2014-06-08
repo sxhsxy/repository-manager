@@ -15,7 +15,7 @@
             <HBox prefHeight="30.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="NEVER">
                <children>
                   <TextField HBox.hgrow="ALWAYS" />
-                <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="查找" HBox.hgrow="NEVER" />
+                <Button onAction="#search" mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="查找" HBox.hgrow="NEVER" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -35,22 +35,22 @@
                 </TableColumn>
                   <TableColumn prefWidth="119.0" text="传真">
                       <cellValueFactory>
-                          <PropertyValueFactory property="tel" />
+                          <PropertyValueFactory property="fax" />
                       </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="100.0" text="联系人">
                       <cellValueFactory>
-                          <PropertyValueFactory property="tel" />
+                          <PropertyValueFactory property="linkman" />
                       </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="119.0" text="电子邮箱">
                       <cellValueFactory>
-                          <PropertyValueFactory property="tel" />
+                          <PropertyValueFactory property="email" />
                       </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="360.0" text="地址">
                       <cellValueFactory>
-                          <PropertyValueFactory property="tel" />
+                          <PropertyValueFactory property="address" />
                       </cellValueFactory>
                   </TableColumn>
               </columns>
