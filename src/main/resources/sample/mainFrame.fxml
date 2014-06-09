@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainFrameController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <Accordion prefHeight="375.0" prefWidth="120.0" BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane animated="false" prefHeight="329.0" prefWidth="144.0" text="进货">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="1.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#loadSupplierView" prefHeight="22.0" prefWidth="200.0" text="供货商">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="190.0" text="进货单" />
+                        <Button mnemonicParsing="false" prefWidth="400.0" text="Button" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                     </padding>
+                  </VBox>
+               </content>
+          </TitledPane>
+          <TitledPane animated="false" text="库存">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+               </content>
+          </TitledPane>
+          <TitledPane animated="false" text="销售">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+               </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </left>
+   <center>
+      <Pane fx:id="centerPane"  BorderPane.alignment="CENTER" />
+   </center>
+
+
+</BorderPane>

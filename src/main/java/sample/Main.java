@@ -10,9 +10,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //SampleView sampleView = new SampleView();
-        SupplierView supplierView = new SupplierView();
+        MainFrameView mainFrameView = new MainFrameView();
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(supplierView.getRoot(), 800, 600));
+        primaryStage.setScene(new Scene(mainFrameView.getRoot(), 800, 600));
         primaryStage.show();
     }
 

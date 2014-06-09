@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SupplierController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SupplierController">
   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+      <VBox prefHeight="200.0"  VBox.vgrow="ALWAYS">
          <children>
-            <HBox prefHeight="30.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="NEVER">
+            <HBox prefHeight="30.0"  spacing="5.0" VBox.vgrow="NEVER">
                <children>
                   <TextField HBox.hgrow="ALWAYS" />
                 <Button onAction="#search" mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="查找" HBox.hgrow="NEVER" />
@@ -21,7 +21,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <TableView fx:id="tableView" onMouseClicked="#selectRow" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" onMouseClicked="#selectRow"   VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn prefWidth="156.0" text="名称">
                     <cellValueFactory>
@@ -55,7 +55,7 @@
                   </TableColumn>
               </columns>
             </TableView>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <ToolBar prefHeight="40.0" >
               <items>
                   <Button fx:id="add" mnemonicParsing="false" onAction="#addSupplier" prefWidth="60.0" text="新增" />
                   <Button fx:id="edit" mnemonicParsing="false" onAction="#editSelectedSupplier" prefWidth="60.0" text="修改" />
@@ -64,9 +64,9 @@
             </ToolBar>
          </children>
       </VBox>
-      <VBox fx:id="editBox"  Disable="true" prefHeight="200.0" prefWidth="1000.0">
+      <VBox fx:id="editBox"  Disable="true" >
          <children>
-            <TitledPane prefHeight="1000.0" prefWidth="1000" text="修改" VBox.vgrow="ALWAYS">
+            <TitledPane  text="修改" VBox.vgrow="ALWAYS">
                <content>
                   <GridPane hgap="20.0" vgap="5.0">
                     
@@ -90,7 +90,7 @@
                      </padding>
                   </GridPane>
                </content></TitledPane>
-            <ToolBar minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+            <ToolBar minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" >
               <items>
                 <Button fx:id="cancel" onAction="#cancel" mnemonicParsing="false" prefWidth="60.0" text="取消" />
                   <Button fx:id="save" onAction="#save" mnemonicParsing="false" prefWidth="60.0" text="保存" />
