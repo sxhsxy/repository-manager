@@ -10,7 +10,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SupplierController">
   <children>
-      <VBox prefHeight="200.0"  VBox.vgrow="ALWAYS">
+      <VBox  VBox.vgrow="ALWAYS">
          <children>
             <HBox prefHeight="30.0"  spacing="5.0" VBox.vgrow="NEVER">
                <children>
@@ -48,7 +48,7 @@
                           <PropertyValueFactory property="email" />
                       </cellValueFactory>
                   </TableColumn>
-                  <TableColumn prefWidth="360.0" text="地址">
+                  <TableColumn prefWidth="360.0"  text="地址">
                       <cellValueFactory>
                           <PropertyValueFactory property="address" />
                       </cellValueFactory>

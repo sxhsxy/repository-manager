@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.ComboBoxTableCell?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PurchaseController">
+    <children>
+        <TitledPane>
+            <content>
+                <VBox>
+                    <children>
+                        <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+                            <items>
+                                <TableView>
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="C1" />
+                                        <TableColumn prefWidth="75.0" text="C2" />
+                                    </columns>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </TableView>
+                                <TableView prefHeight="200.0" prefWidth="200.0">
+                                    <columns>
+                                        <TableColumn prefWidth="75.0" text="C1" />
+                                        <TableColumn prefWidth="75.0" text="C2" />
+                                    </columns>
+                                </TableView>
+                            </items>
+                        </SplitPane>
+                        <ToolBar prefHeight="40.0" prefWidth="200.0">
+                            <items>
+                                <Button mnemonicParsing="false" text="Button" />
+                            </items>
+                        </ToolBar>
+                    </children>
+                    <padding>
+                        <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
+                    </padding>
+                </VBox>
+            </content>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </TitledPane>
+        <TitledPane text="编辑进货单" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <SplitPane dividerPositions="0.5">
+                            <items>
+                                <GridPane>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Label" />
+                                        <Label text="Label" GridPane.rowIndex="1" />
+                                        <TextField GridPane.columnIndex="1" />
+                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    </children>
+                                </GridPane>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                                      <TableView fx:id="editTable" prefHeight="200.0" prefWidth="200.0">
+                                          <columns>
+                                              <TableColumn prefWidth="75.0" text="name" >
+                                                <cellFactory>
+
+                                                </cellFactory>
+
+                                              </TableColumn>
+                                              <TableColumn prefWidth="75.0" text="cost" />
+                                              <TableColumn prefWidth="75.0" text="quantity" />
+                                              <TableColumn prefWidth="75.0" text="total" />
+                                          </columns>
+
+                                      </TableView>
+                              <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                <items>
+                                  <Button mnemonicParsing="false" onAction="#addCommodity" text="增加" />
+                                </items>
+                              </ToolBar>
+                           </children>
+                        </VBox>
+                            </items>
+                        </SplitPane>
+                        <ToolBar prefHeight="40.0" prefWidth="200.0">
+                            <items>
+                                <Button mnemonicParsing="false" text="Button" />
+                            </items>
+                        </ToolBar>
+                    </children>
+                    <padding>
+                        <Insets bottom="0.0" left="0.0" right="0.0" top="0.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </TitledPane>
+    </children>
+</VBox>
