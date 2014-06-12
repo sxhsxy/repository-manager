@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import org.springframework.beans.factory.annotation.Autowired;
+import sample.repository.CommodityRepository;
 
 import java.net.URL;
 import java.util.ResourceBundle;
