@@ -8,4 +8,5 @@ import sample.entity.Commodity;
  */
 public interface CommodityRepository extends JpaRepository<Commodity, Long> {
     public Commodity findByName(String name);
+
 }

@@ -13,7 +13,9 @@ import java.util.Collection;
  * Created by xiaohu on 14-6-7.
  */
 @Entity
-@SecondaryTable(name = "commodity_inventory")
+@Table(name = "commodity")
+@SecondaryTable(name = "commodity_inventory", pkJoinColumns = {
+        @PrimaryKeyJoinColumn(name = "commodity_id") })
 public class Commodity {
     private Long id;
     private final SimpleStringProperty barcode = new SimpleStringProperty();
