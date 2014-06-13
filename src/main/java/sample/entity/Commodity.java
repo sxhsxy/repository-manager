@@ -31,7 +31,28 @@ public class Commodity {
     private final  SimpleLongProperty inputQuantity = new  SimpleLongProperty();
     private final SimpleLongProperty outputQuantity = new  SimpleLongProperty();
 
+    public Commodity() {
+    }
+
+    public Commodity(String barcode, String name, String unit, BigDecimal cost, BigDecimal price,
+                     Long initialQuantity, Long inputQuantity, Long outputQuantity) {
+        this.setName(name);
+        this.setBarcode(barcode);
+        this.setCost(cost);
+        this.setPrice(price);
+        this.setInitialQuantity(initialQuantity);
+        this.setInputQuantity(inputQuantity);
+        this.setOutputQuantity(outputQuantity);
+    }
+
     @Id
+    @GeneratedValue(strategy= GenerationType.TABLE, generator="hibernate_table_generator")
+    @TableGenerator(name = "hibernate_table_generator",
+            table = "hibernate_sequence_table",
+            pkColumnName = "sequence_name",
+            valueColumnName = "next_val",
+            pkColumnValue = "commodity"
+    )
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
     public Long getId() {
         return id;
@@ -174,5 +195,10 @@ public class Commodity {
 
     public void setSaleRecordDetails(Collection<SaleRecordDetail> saleRecordDetails) {
         this.saleRecordDetails = saleRecordDetails;
+    }
+
+    @Override
+    public String toString() {
+        return barcode.get()+" "+name.get();
     }
 }

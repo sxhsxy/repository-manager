@@ -72,16 +72,25 @@
                                 </GridPane>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                                      <TableView fx:id="editTable" prefHeight="200.0" prefWidth="200.0">
+                                      <TableView fx:id="editTable" editable="true" prefHeight="200.0" prefWidth="200.0">
                                           <columns>
-                                              <TableColumn fx:id="commodityNameColumn" prefWidth="75.0" text="name" >
+                                              <TableColumn fx:id="commodityNameColumn" prefWidth="160.0" text="name" >
                                                 <cellValueFactory>
-                                                    <PropertyValueFactory property="name"/>
+                                                    <PropertyValueFactory property="commodity"/>
                                                 </cellValueFactory>
 
                                               </TableColumn>
-                                              <TableColumn prefWidth="75.0" text="cost" />
-                                              <TableColumn prefWidth="75.0" text="quantity" />
+                                              <TableColumn prefWidth="75.0" text="cost">
+                                                  <cellValueFactory>
+                                                      <PropertyValueFactory property="cost"/>
+                                                  </cellValueFactory>
+                                              </TableColumn>
+                                              <TableColumn prefWidth="75.0" text="quantity">
+                                                  <cellValueFactory>
+                                                      <PropertyValueFactory property="quantity"/>
+                                                  </cellValueFactory>
+                                              </TableColumn>
+
                                               <TableColumn prefWidth="75.0" text="total" />
                                           </columns>
 
