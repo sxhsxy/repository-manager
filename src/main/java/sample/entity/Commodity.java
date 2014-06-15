@@ -199,6 +199,6 @@ public class Commodity {
 
     @Override
     public String toString() {
-        return barcode.get()+" "+name.get();
+        return name.get() + barcode.get();
     }
 }

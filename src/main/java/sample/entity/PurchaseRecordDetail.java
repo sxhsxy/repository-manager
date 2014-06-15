@@ -2,6 +2,7 @@ package sample.entity;
 
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,10 +14,11 @@ import java.math.BigDecimal;
 @Table(name = "purchase_record_detail", schema = "public", catalog = "javafxdb")
 public class PurchaseRecordDetail {
     private Long id;
-    private SimpleObjectProperty<BigDecimal> cost = new SimpleObjectProperty<BigDecimal>();
-    private SimpleLongProperty quantity = new SimpleLongProperty();
-    private SimpleObjectProperty<Commodity> commodity = new SimpleObjectProperty<Commodity>();
-    private SimpleObjectProperty<PurchaseRecord> purchaseRecord = new SimpleObjectProperty<PurchaseRecord>();
+    private final SimpleObjectProperty<BigDecimal> cost = new SimpleObjectProperty<BigDecimal>();
+    private final SimpleLongProperty quantity = new SimpleLongProperty();
+    private final SimpleObjectProperty<Commodity> commodity = new SimpleObjectProperty<Commodity>();
+    private final SimpleObjectProperty<PurchaseRecord> purchaseRecord = new SimpleObjectProperty<PurchaseRecord>();
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.TABLE, generator="hibernate_table_generator")
@@ -117,8 +119,11 @@ public class PurchaseRecordDetail {
         return purchaseRecord;
     }
 
+
+
     public PurchaseRecordDetail() {
     }
+
 
     public PurchaseRecordDetail(PurchaseRecord purchaseRecord, BigDecimal cost, Long quantity, Commodity commodity) {
         this.setPurchaseRecord(purchaseRecord);

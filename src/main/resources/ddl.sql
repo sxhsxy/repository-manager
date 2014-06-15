@@ -102,9 +102,9 @@ CREATE TABLE purchase_record_detail
 (
   id BIGINT,
   purchase_record_id BIGINT REFERENCES purchase_record(id),
-  commodity_id BIGINT REFERENCES commodity(id),
-  cost DECIMAL (16,2),
-  quantity BIGINT,
+  commodity_id BIGINT NOT NULL REFERENCES commodity(id),
+  cost DECIMAL (16,2) NOT NULL ,
+  quantity BIGINT NOT NULL ,
   PRIMARY KEY(id)
 );
 
@@ -120,9 +120,9 @@ CREATE TABLE sale_record_detail
 (
   id BIGINT,
   sale_record_id BIGINT REFERENCES sale_record(id),
-  commodity_id BIGINT REFERENCES commodity(id),
-  price DECIMAL (16,2),
-  quantity BIGINT ,
+  commodity_id BIGINT NOT NULL REFERENCES commodity(id),
+  price DECIMAL (16,2) NOT NULL ,
+  quantity BIGINT NOT NULL ,
   PRIMARY KEY (id)
 );
 
