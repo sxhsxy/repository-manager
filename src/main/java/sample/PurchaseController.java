@@ -1,6 +1,7 @@
 package sample;
 
 import com.sun.javafx.scene.control.skin.VirtualFlow;
+import impl.org.controlsfx.i18n.Localization;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.StringConverter;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.LongStringConverter;
+import org.controlsfx.dialog.Dialogs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sample.entity.PurchaseRecord;
@@ -32,6 +34,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -121,20 +124,25 @@ public class PurchaseController implements Initializable {
     }
 
     public void editPurchaseRecord(ActionEvent actionEvent) {
-        purchaseRecordDetailsToDelete = new ArrayList<PurchaseRecordDetail>();
         purchaseRecordEditing = purchaseTable.getSelectionModel().getSelectedItem();
+
+        if(purchaseRecordEditing != null) {
+        purchaseRecordDetailsToDelete = new ArrayList<PurchaseRecordDetail>();
         purchaseNumberText.setText(purchaseRecordEditing.getId().toString());
         datetimeText.setText(purchaseRecordEditing.getDatetime().toString());
         supplierComboBox.getSelectionModel().select(purchaseRecordEditing.getSupplier());
         commodityEditTable.setItems(FXCollections.observableArrayList(purchaseService.findPurchaseRecordEager(purchaseRecordEditing).getPurchaseRecordDetails()));
         purchaseRecordEditPane.setDisable(false);
         purchaseRecordListPane.setDisable(true);
+        }
     }
 
     public void deletePurchaseRecord(ActionEvent actionEvent) {
         PurchaseRecord purchaseRecord = purchaseTable.getSelectionModel().getSelectedItem();
+        if(purchaseRecord != null) {
         purchaseService.delete(purchaseRecord);
         purchaseTable.getItems().remove(purchaseRecord);
+        }
     }
 
     public void savePurchaseRecord(ActionEvent actionEvent) {
@@ -167,15 +175,19 @@ public class PurchaseController implements Initializable {
 
         purchaseRecordEditPane.setDisable(true);
         purchaseRecordListPane.setDisable(false);
+
+        //Dialogs.create().message("你好").showWarning();
     }
 
     public void addCommodity(ActionEvent actionEvent) {
-        commodityEditTable.getItems().add(new PurchaseRecordDetail());
+        PurchaseRecordDetail p = new PurchaseRecordDetail();
+        commodityEditTable.getItems().add(p);
     }
 
     public void deleteCommodity(ActionEvent actionEvent) {
         PurchaseRecordDetail purchaseRecordDetail = (PurchaseRecordDetail) commodityEditTable.getSelectionModel().getSelectedItem();
         commodityEditTable.getItems().remove(purchaseRecordDetail);
-        purchaseRecordDetailsToDelete.add(purchaseRecordDetail);
+        if(purchaseRecordDetail.getCommodity() !=null)
+            purchaseRecordDetailsToDelete.add(purchaseRecordDetail);
     }
 }
