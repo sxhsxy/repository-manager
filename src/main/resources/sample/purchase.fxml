@@ -79,7 +79,7 @@
                 <Insets />
             </VBox.margin>
         </TitledPane>
-        <TitledPane fx:id="purchaseRecordEditPane" disable="true" maxHeight="200.0" text="编辑进货单" VBox.vgrow="NEVER">
+        <TitledPane fx:id="purchaseRecordEditPane" disable="true" maxHeight="300.0" text="编辑进货单" VBox.vgrow="SOMETIMES">
             <content>
                 <VBox>
                     <children>

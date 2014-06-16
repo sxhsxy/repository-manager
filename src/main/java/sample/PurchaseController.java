@@ -19,6 +19,7 @@ import javafx.util.converter.LongStringConverter;
 import org.controlsfx.dialog.Dialogs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import sample.entity.Commodity;
 import sample.entity.PurchaseRecord;
 import sample.entity.PurchaseRecordDetail;
 import sample.entity.Supplier;
@@ -44,7 +45,7 @@ import java.util.ResourceBundle;
 public class PurchaseController implements Initializable {
 
     @FXML private TableView<PurchaseRecordDetail> commodityEditTable;
-    @FXML private TableColumn commodityNameColumn;
+    @FXML private TableColumn<PurchaseRecordDetail, Commodity> commodityNameColumn;
     @FXML private TableColumn commodityCostColumn;
     @FXML private TableColumn commodityQuantityColumn;
     @FXML private TableView<PurchaseRecord> purchaseTable;
@@ -182,12 +183,16 @@ public class PurchaseController implements Initializable {
     public void addCommodity(ActionEvent actionEvent) {
         PurchaseRecordDetail p = new PurchaseRecordDetail();
         commodityEditTable.getItems().add(p);
+        int index = commodityEditTable.getItems().indexOf(p);
+
     }
 
     public void deleteCommodity(ActionEvent actionEvent) {
         PurchaseRecordDetail purchaseRecordDetail = (PurchaseRecordDetail) commodityEditTable.getSelectionModel().getSelectedItem();
-        commodityEditTable.getItems().remove(purchaseRecordDetail);
-        if(purchaseRecordDetail.getCommodity() !=null)
-            purchaseRecordDetailsToDelete.add(purchaseRecordDetail);
+        if (purchaseRecordDetail != null) {
+            commodityEditTable.getItems().remove(purchaseRecordDetail);
+            if (purchaseRecordDetail.getCommodity() != null)
+                purchaseRecordDetailsToDelete.add(purchaseRecordDetail);
+        }
     }
 }
