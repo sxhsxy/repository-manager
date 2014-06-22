@@ -13,12 +13,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //SampleView sampleView = new SampleView();
-        //MainFrameView mainFrameView = new MainFrameView();
+        MainFrameView mainFrameView = new MainFrameView();
         //controlsfx dialog's properties file do not have correct character for Chinese.
         Localization.setLocale(new Locale("en"));
         PurchaseView purchaseView = new PurchaseView();
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(purchaseView.getRoot(), 800, 600));
+        primaryStage.setScene(new Scene(mainFrameView.getRoot(), 800, 600));
         primaryStage.show();
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -10,18 +11,25 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SupplierController">
   <children>
-      <VBox  VBox.vgrow="ALWAYS">
+      <VBox VBox.vgrow="ALWAYS">
          <children>
-            <HBox prefHeight="30.0"  spacing="5.0" VBox.vgrow="NEVER">
+            <HBox prefHeight="30.0" spacing="5.0" VBox.vgrow="NEVER">
                <children>
                   <TextField HBox.hgrow="ALWAYS" />
-                <Button onAction="#search" mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="查找" HBox.hgrow="NEVER" />
+                <Button mnemonicParsing="false" onAction="#search" text="查找" HBox.hgrow="NEVER">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0">
+                           <image>
+                              <Image url="@icon/edit1/30789x.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <TableView fx:id="tableView" onMouseClicked="#selectRow"   VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" onMouseClicked="#selectRow" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn prefWidth="156.0" text="名称">
                     <cellValueFactory>
@@ -48,25 +56,46 @@
                           <PropertyValueFactory property="email" />
                       </cellValueFactory>
                   </TableColumn>
-                  <TableColumn prefWidth="360.0"  text="地址">
+                  <TableColumn prefWidth="360.0" text="地址">
                       <cellValueFactory>
                           <PropertyValueFactory property="address" />
                       </cellValueFactory>
                   </TableColumn>
               </columns>
             </TableView>
-            <ToolBar prefHeight="40.0" >
+            <ToolBar prefHeight="40.0">
               <items>
-                  <Button fx:id="add" mnemonicParsing="false" onAction="#addSupplier" prefWidth="60.0" text="新增" />
-                  <Button fx:id="edit" mnemonicParsing="false" onAction="#editSelectedSupplier" prefWidth="60.0" text="修改" />
-                  <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteSelectedSupplier" prefWidth="60.0" text="删除" />
+                  <Button fx:id="add" mnemonicParsing="false" onAction="#addSupplier" text="新增">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/edit1/13254.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="edit" mnemonicParsing="false" onAction="#editSelectedSupplier" text="修改">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/edit1/12616.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteSelectedSupplier" text="删除">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/edit1/5316.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
               </items>
             </ToolBar>
          </children>
       </VBox>
-      <VBox fx:id="editBox"  Disable="true" >
+      <VBox fx:id="editBox" Disable="true">
          <children>
-            <TitledPane  text="修改" VBox.vgrow="ALWAYS">
+            <TitledPane text="修改" VBox.vgrow="ALWAYS">
                <content>
                   <GridPane hgap="20.0" vgap="5.0">
                     
@@ -77,7 +106,7 @@
                          <Label text="联系人：" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                          <Label text="电子邮箱：" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                          <Label text="地址：" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="name" GridPane.columnIndex="1"  GridPane.rowIndex="0" />
+                        <TextField fx:id="name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                        <TextField fx:id="tel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                          <TextField fx:id="fax" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                          <TextField fx:id="linkman" GridPane.columnIndex="3" GridPane.rowIndex="0" />
@@ -88,12 +117,37 @@
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
                   </GridPane>
                </content></TitledPane>
-            <ToolBar minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" >
+            <ToolBar minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0">
               <items>
-                <Button fx:id="cancel" onAction="#cancel" mnemonicParsing="false" prefWidth="60.0" text="取消" />
-                  <Button fx:id="save" onAction="#save" mnemonicParsing="false" prefWidth="60.0" text="保存" />
+                <Button fx:id="cancel" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#cancel" text="取消">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/edit1/539586.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="save" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#save" text="保存">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/edit1/4774.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
               </items>
             </ToolBar>
          </children>

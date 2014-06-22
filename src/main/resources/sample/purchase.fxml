@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -14,6 +15,42 @@
             <content>
                 <VBox minHeight="300.0">
                     <children>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0">
+                    <items>
+                      <Button mnemonicParsing="false" onAction="#queryWeek" text="本周进货单">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0">
+                                 <image>
+                                    <Image url="@icon/edit1/1070991x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#queryMonth" text="本月进货单">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0">
+                                 <image>
+                                    <Image url="@icon/edit1/1070889x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator orientation="VERTICAL" />
+                        <Label text="自定义查询：" />
+                        <DatePicker />
+                        <Label text="至" />
+                        <DatePicker />
+                        <Button mnemonicParsing="false" onAction="#query" text="查询">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0">
+                                 <image>
+                                    <Image url="@icon/edit1/30789x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                    </items>
+                  </ToolBar>
                         <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
                             <items>
                                 <TableView fx:id="purchaseTable">
@@ -64,9 +101,30 @@
                         </SplitPane>
                         <ToolBar VBox.vgrow="NEVER">
                             <items>
-                                <Button mnemonicParsing="false" onAction="#newPurchaseRecord" text="新建进货单" />
-                                <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#editPurchaseRecord" text="编辑进货单" />
-                                <Button layoutX="90.0" layoutY="14.0" mnemonicParsing="false" onAction="#deletePurchaseRecord" text="删除进货单" />
+                                <Button mnemonicParsing="false" onAction="#newPurchaseRecord" text="新建进货单">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icon/edit1/13254.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#editPurchaseRecord" text="编辑进货单">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icon/edit1/12616.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Button layoutX="90.0" layoutY="14.0" mnemonicParsing="false" onAction="#deletePurchaseRecord" text="删除进货单">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icon/edit1/5316.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                             </items>
                         </ToolBar>
                     </children>
@@ -135,18 +193,46 @@
                                         </TableView>
                                         <ToolBar fx:id="commodityEditToolBar" prefHeight="40.0" prefWidth="200.0">
                                             <items>
-                                                <Button mnemonicParsing="false" onAction="#addCommodity" text="增加商品" />
-                                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteCommodity" text="删除商品" />
+                                                <Button mnemonicParsing="false" onAction="#addCommodity" text="增加商品">
+                                       <graphic>
+                                          <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@icon/edit1/17027x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Button>
+                                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteCommodity" text="删除商品">
+                                       <graphic>
+                                          <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@icon/edit1/15080x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Button>
                                             </items>
                                         </ToolBar>
                                     </children>
                                 </VBox>
                             </items>
                         </SplitPane>
-                        <ToolBar VBox.vgrow="NEVER">
+                        <ToolBar nodeOrientation="RIGHT_TO_LEFT" VBox.vgrow="NEVER">
                             <items>
-                                <Button mnemonicParsing="false" onAction="#savePurchaseRecord" text="保存进货单" />
-                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelPurchaseRecord" text="取消" />
+                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelPurchaseRecord" text="取消">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icon/edit1/539586.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Button mnemonicParsing="false" onAction="#savePurchaseRecord" text="保存">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@icon/edit1/4774.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                             </items>
                         </ToolBar>
                     </children>

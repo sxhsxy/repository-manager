@@ -21,6 +21,7 @@ public class MainFrameController implements Initializable {
     public void loadSupplierView(ActionEvent actionEvent) {
         SupplierView supplierView = new SupplierView();
         Pane pane = (Pane) supplierView.getRoot();
+        centerPane.getChildren().clear();
         centerPane.getChildren().add(pane);
         pane.maxWidthProperty().bind(centerPane.widthProperty());
         pane.maxHeightProperty().bind(centerPane.heightProperty());
@@ -31,5 +32,16 @@ public class MainFrameController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadSupplierView(null);
+    }
+
+    public void loadPurchaseView(ActionEvent actionEvent) {
+        PurchaseView purchaseView = new PurchaseView();
+        Pane pane = (Pane) purchaseView.getRoot();
+        centerPane.getChildren().clear();
+        centerPane.getChildren().add(pane);
+        pane.maxWidthProperty().bind(centerPane.widthProperty());
+        pane.maxHeightProperty().bind(centerPane.heightProperty());
+        pane.minWidthProperty().bind(centerPane.widthProperty());
+        pane.minHeightProperty().bind(centerPane.heightProperty());
     }
 }

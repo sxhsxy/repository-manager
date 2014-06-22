@@ -195,4 +195,14 @@ public class PurchaseController implements Initializable {
                 purchaseRecordDetailsToDelete.add(purchaseRecordDetail);
         }
     }
+
+    public void queryWeek(ActionEvent actionEvent) {
+    }
+
+    public void queryMonth(ActionEvent actionEvent) {
+
+    }
+
+    public void query(ActionEvent actionEvent) {
+    }
 }
