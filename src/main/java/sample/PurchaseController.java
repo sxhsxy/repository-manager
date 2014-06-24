@@ -32,6 +32,7 @@ import sample.util.SupplierStringConverter;
 import java.net.URL;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,9 @@ public class PurchaseController implements Initializable {
     @FXML private ToolBar commodityEditToolBar;
     @FXML private TitledPane purchaseRecordEditPane;
     @FXML private TitledPane purchaseRecordListPane;
+    @FXML private DatePicker dateStart;
+    @FXML private DatePicker dateEnd;
+
     @Autowired private PurchaseRecordRepository purchaseRecordRepository;
     @Autowired private SupplierRepository supplierRepository;
     @Autowired private CommodityRepository commodityRepository;
@@ -196,13 +200,22 @@ public class PurchaseController implements Initializable {
         }
     }
 
-    public void queryWeek(ActionEvent actionEvent) {
+    public void listMonth(ActionEvent actionEvent) {
+        doListBetween(LocalDate.now().withDayOfMonth(1), LocalDate.now());
     }
 
-    public void queryMonth(ActionEvent actionEvent) {
-
+    public void listBetween(ActionEvent actionEvent) {
+        LocalDate localDateStart = dateStart.getValue();
+        LocalDate localDateEnd = dateEnd.getValue();
+        doListBetween(localDateStart, localDateEnd);
     }
 
-    public void query(ActionEvent actionEvent) {
+    public void doListBetween(LocalDate start, LocalDate end) {
+        if(start != null && end != null) {
+            Timestamp timestampStart = Timestamp.valueOf(start.atStartOfDay());
+            Timestamp timestampEnd = Timestamp.valueOf(end.plusDays(1).atStartOfDay());
+            List<PurchaseRecord> resultList = purchaseRecordRepository.findByDatetimeBetween(timestampStart, timestampEnd);
+            purchaseTable.setItems(FXCollections.observableArrayList(resultList));
+        }
     }
 }

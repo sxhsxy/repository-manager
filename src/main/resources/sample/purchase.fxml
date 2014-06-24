@@ -11,22 +11,13 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PurchaseController">
     <children>
-        <TitledPane fx:id="purchaseRecordListPane" text="进货单列表" maxHeight="4000" VBox.vgrow="ALWAYS">
+        <TitledPane fx:id="purchaseRecordListPane" maxHeight="4000" text="进货单列表" VBox.vgrow="ALWAYS">
             <content>
                 <VBox minHeight="300.0">
                     <children>
                   <ToolBar prefHeight="40.0" prefWidth="200.0">
                     <items>
-                      <Button mnemonicParsing="false" onAction="#queryWeek" text="本周进货单">
-                           <graphic>
-                              <ImageView fitHeight="15.0" fitWidth="15.0">
-                                 <image>
-                                    <Image url="@icon/edit1/1070991x.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#queryMonth" text="本月进货单">
+                        <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#listMonth" text="当月进货单">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0">
                                  <image>
@@ -37,10 +28,10 @@
                         </Button>
                         <Separator orientation="VERTICAL" />
                         <Label text="自定义查询：" />
-                        <DatePicker />
+                        <DatePicker fx:id="dateStart" />
                         <Label text="至" />
-                        <DatePicker />
-                        <Button mnemonicParsing="false" onAction="#query" text="查询">
+                        <DatePicker fx:id="dateEnd" />
+                        <Button mnemonicParsing="false" onAction="#listBetween" text="查询">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0">
                                  <image>
