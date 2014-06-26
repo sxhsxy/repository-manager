@@ -1,7 +1,5 @@
 package sample;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
-import impl.org.controlsfx.i18n.Localization;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,12 +12,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.transform.Scale;
 import javafx.util.StringConverter;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.LongStringConverter;
-import org.controlsfx.dialog.Dialogs;
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sample.entity.Commodity;
@@ -33,13 +32,10 @@ import sample.repository.SupplierRepository;
 import sample.service.PurchaseService;
 import sample.util.SupplierStringConverter;
 import java.net.URL;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
@@ -223,16 +219,34 @@ public class PurchaseController implements Initializable {
         }
     }
 
-    public void printPurchaseRecordDetail(ActionEvent actionEvent) {
-       PrinterJob job = PrinterJob.createPrinterJob();
-        if (job != null) {
-            //boolean success = job.printPage(purchaseRecordDetail);
-            //job.showPageSetupDialog(null);
-            //job.showPrintDialog(null);
-            boolean success = job.printPage(purchaseRecordDetail);
-            if (success) {
-                job.endJob();
+    public void printPurchaseRecordDetail(ActionEvent actionEvent) throws Exception{
+//        Dialog dialog = new Dialog(null, "打印");
+//        dialog.getActions().addAll(Dialog.Actions.OK, Dialog.Actions.CANCEL);
+//        PurchaseRecordPrintFrameView content = new PurchaseRecordPrintFrameView();
+//        Pane myPane = (Pane)content.getRoot();
+//        dialog.setContent(myPane);
+//        Action result = dialog.show();
+//        if (result == Dialog.Actions.OK) {
+//            PrinterJob job = PrinterJob.createPrinterJob();
+//            if (job != null) {
+//                //boolean success = job.printPage(purchaseRecordDetail);
+//                //job.showPageSetupDialog(null);
+//                //job.showPrintDialog(null);
+//                boolean success = job.printPage(myPane);
+//                if (success) {
+//                    job.endJob();
+//                }
+//            }
+//        }
+        PrinterJob job = PrinterJob.createPrinterJob();
+            if (job != null) {
+                //boolean success = job.printPage(purchaseRecordDetail);
+                //job.showPageSetupDialog(null);
+                //job.showPrintDialog(null);
+                boolean success = job.printPage(purchaseRecordDetail);
+                if (success) {
+                    job.endJob();
+                }
             }
-        }
     }
 }

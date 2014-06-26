@@ -18,7 +18,7 @@
             <content>
                 <VBox minHeight="300.0">
                     <children>
-                  <ToolBar prefHeight="40.0" prefWidth="200.0">
+                  <ToolBar>
                     <items>
                         <Button layoutX="10.0" layoutY="14.0" mnemonicParsing="false" onAction="#listMonth" text="当月进货单">
                            <graphic>
@@ -55,8 +55,8 @@
                                             </cellValueFactory>
                                         </TableColumn>
 
-
-                                        <TableColumn prefWidth="123.0" text="供货商">
+                  
+                                                          <TableColumn prefWidth="123.0" text="供货商">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="supplier" />
                                             </cellValueFactory>
@@ -71,29 +71,56 @@
                                         <Insets />
                                     </VBox.margin>
                                 </TableView>
-                        <VBox fx:id="purchaseRecordDetail">
+                        <VBox fx:id="purchaseRecordDetail" prefWidth="500.0">
                            <children>
-                              <TextFlow prefHeight="200.0" prefWidth="200.0" />
-                                      <TableView fx:id="commodityListTable">
-                                          <columns>
-                                              <TableColumn prefWidth="109.0" text="订单商品名称">
-                                                  <cellValueFactory>
-                                                      <PropertyValueFactory property="commodity" />
-                                                  </cellValueFactory>
-                                              </TableColumn>
-      
-                                              <TableColumn prefWidth="107.0" text="进货价格">
-                                                  <cellValueFactory>
-                                                      <PropertyValueFactory property="cost" />
-                                                  </cellValueFactory>
-                                              </TableColumn>
-                                              <TableColumn prefWidth="107.0" text="进货数量">
-                                                  <cellValueFactory>
-                                                      <PropertyValueFactory property="quantity" />
-                                                  </cellValueFactory>
-                                              </TableColumn>
-                                          </columns>
-                                      </TableView>
+                              <GridPane fx:id="purchaseRecordLayout" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label alignment="CENTER" text="进    货    单" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+                                       <font>
+                                          <Font name="SimHei" size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="38.0" prefWidth="102.0" text=" 单号：" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" text="供货商：" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                    <Label layoutX="10.0" layoutY="24.0" prefHeight="38.0" prefWidth="102.0" text="日期：" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                    <Label layoutX="210.0" layoutY="141.0" prefHeight="38.0" prefWidth="102.0" text="合计：" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                            <TableView fx:id="commodityListTable" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                                                <columns>
+                                                    <TableColumn prefWidth="109.0" text="订单商品名称">
+                                                        <cellValueFactory>
+                                                            <PropertyValueFactory property="commodity" />
+                                                        </cellValueFactory>
+                                                    </TableColumn>
+            
+                                                                <TableColumn prefWidth="107.0" text="进货价格">
+                                                        <cellValueFactory>
+                                                            <PropertyValueFactory property="cost" />
+                                                        </cellValueFactory>
+                                                    </TableColumn>
+                                                    <TableColumn prefWidth="107.0" text="进货数量">
+                                                        <cellValueFactory>
+                                                            <PropertyValueFactory property="quantity" />
+                                                        </cellValueFactory>
+                                                    </TableColumn>
+                                                </columns>
+                                            </TableView>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="80.0" minWidth="10.0" prefWidth="26.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="55.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="73.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="63.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="117.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="45.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="101.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="71.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="303.0" minHeight="10.0" prefHeight="279.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
                            </children>
                         </VBox>
                             </items>
