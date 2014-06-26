@@ -31,7 +31,7 @@ public class MainFrameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadSupplierView(null);
+        loadPurchaseView(null);
     }
 
     public void loadPurchaseView(ActionEvent actionEvent) {

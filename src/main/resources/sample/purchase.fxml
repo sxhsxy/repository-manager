@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.geometry.*?>
@@ -68,26 +71,31 @@
                                         <Insets />
                                     </VBox.margin>
                                 </TableView>
-                                <TableView fx:id="commodityListTable">
-                                    <columns>
-                                        <TableColumn prefWidth="109.0" text="订单商品名称">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="commodity" />
-                                            </cellValueFactory>
-                                        </TableColumn>
-
-                                        <TableColumn prefWidth="107.0" text="进货价格">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="cost" />
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                        <TableColumn prefWidth="107.0" text="进货数量">
-                                            <cellValueFactory>
-                                                <PropertyValueFactory property="quantity" />
-                                            </cellValueFactory>
-                                        </TableColumn>
-                                    </columns>
-                                </TableView>
+                        <VBox fx:id="purchaseRecordDetail">
+                           <children>
+                              <TextFlow prefHeight="200.0" prefWidth="200.0" />
+                                      <TableView fx:id="commodityListTable">
+                                          <columns>
+                                              <TableColumn prefWidth="109.0" text="订单商品名称">
+                                                  <cellValueFactory>
+                                                      <PropertyValueFactory property="commodity" />
+                                                  </cellValueFactory>
+                                              </TableColumn>
+      
+                                              <TableColumn prefWidth="107.0" text="进货价格">
+                                                  <cellValueFactory>
+                                                      <PropertyValueFactory property="cost" />
+                                                  </cellValueFactory>
+                                              </TableColumn>
+                                              <TableColumn prefWidth="107.0" text="进货数量">
+                                                  <cellValueFactory>
+                                                      <PropertyValueFactory property="quantity" />
+                                                  </cellValueFactory>
+                                              </TableColumn>
+                                          </columns>
+                                      </TableView>
+                           </children>
+                        </VBox>
                             </items>
                         </SplitPane>
                         <ToolBar VBox.vgrow="NEVER">
@@ -116,6 +124,16 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
+                        <Separator orientation="VERTICAL" />
+                        <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#printPurchaseRecordDetail" text="打印进货单">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0">
+                                 <image>
+                                    <Image url="@icon/edit1/34476x.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                             </items>
                         </ToolBar>
                     </children>

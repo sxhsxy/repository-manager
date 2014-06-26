@@ -9,10 +9,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.scene.transform.Scale;
 import javafx.util.StringConverter;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.LongStringConverter;
@@ -59,6 +62,7 @@ public class PurchaseController implements Initializable {
     @FXML private TitledPane purchaseRecordListPane;
     @FXML private DatePicker dateStart;
     @FXML private DatePicker dateEnd;
+    @FXML private VBox purchaseRecordDetail;
 
     @Autowired private PurchaseRecordRepository purchaseRecordRepository;
     @Autowired private SupplierRepository supplierRepository;
@@ -216,6 +220,19 @@ public class PurchaseController implements Initializable {
             Timestamp timestampEnd = Timestamp.valueOf(end.plusDays(1).atStartOfDay());
             List<PurchaseRecord> resultList = purchaseRecordRepository.findByDatetimeBetween(timestampStart, timestampEnd);
             purchaseTable.setItems(FXCollections.observableArrayList(resultList));
+        }
+    }
+
+    public void printPurchaseRecordDetail(ActionEvent actionEvent) {
+       PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            //boolean success = job.printPage(purchaseRecordDetail);
+            //job.showPageSetupDialog(null);
+            //job.showPrintDialog(null);
+            boolean success = job.printPage(purchaseRecordDetail);
+            if (success) {
+                job.endJob();
+            }
         }
     }
 }
