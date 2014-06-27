@@ -81,25 +81,43 @@
                                        </font>
                                     </Label>
                                     <Label prefHeight="38.0" prefWidth="102.0" text=" 单号：" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" text="供货商：" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <Label layoutX="10.0" layoutY="24.0" prefHeight="38.0" prefWidth="102.0" text="日期：" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                                    <Label layoutX="210.0" layoutY="141.0" prefHeight="38.0" prefWidth="102.0" text="合计：" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                     <Label fx:id="serialLabel" layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                     <Label layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" text="供货商：" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                     <Label fx:id="supplierLabel" layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                    <Label layoutX="10.0" layoutY="24.0" prefHeight="38.0" prefWidth="60.0" text="日期：" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                     <Label fx:id="datetimeLabel" layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                     <Label layoutX="210.0" layoutY="141.0" prefHeight="38.0" prefWidth="60.0" text="合计：" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                     <Label fx:id="amountLabel" layoutX="10.0" layoutY="89.0" prefHeight="38.0" prefWidth="102.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
                                             <TableView fx:id="commodityListTable" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
                                                 <columns>
-                                                    <TableColumn prefWidth="109.0" text="订单商品名称">
+                                                    <TableColumn prefWidth="109.0" text="商品编号">
+                                                        <cellValueFactory>
+                                                            <PropertyValueFactory property="barcode" />
+                                                        </cellValueFactory>
+                                                    </TableColumn>
+                                                    <TableColumn prefWidth="109.0" text="名称">
                                                         <cellValueFactory>
                                                             <PropertyValueFactory property="commodity" />
                                                         </cellValueFactory>
                                                     </TableColumn>
-            
-                                                                <TableColumn prefWidth="107.0" text="进货价格">
+                                                    <TableColumn prefWidth="109.0" text="单位">
+                                                        <cellValueFactory>
+                                                            <PropertyValueFactory property="unit" />
+                                                        </cellValueFactory>
+                                                    </TableColumn>
+                                                    <TableColumn prefWidth="107.0" text="进货价格">
                                                         <cellValueFactory>
                                                             <PropertyValueFactory property="cost" />
                                                         </cellValueFactory>
                                                     </TableColumn>
-                                                    <TableColumn prefWidth="107.0" text="进货数量">
+                                                    <TableColumn prefWidth="107.0" text="数量">
                                                         <cellValueFactory>
                                                             <PropertyValueFactory property="quantity" />
+                                                        </cellValueFactory>
+                                                    </TableColumn>
+                                                    <TableColumn prefWidth="109.0" text="金额">
+                                                        <cellValueFactory>
+                                                            <PropertyValueFactory property="value" />
                                                         </cellValueFactory>
                                                     </TableColumn>
                                                 </columns>
@@ -205,25 +223,35 @@
                                     <children>
                                         <TableView fx:id="commodityEditTable" editable="true" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn fx:id="commodityNameColumn" prefWidth="160.0" text="name">
+                                                <TableColumn fx:id="commodityNameColumn" prefWidth="160.0" text="商品名称">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="commodity" />
                                                     </cellValueFactory>
 
                                                 </TableColumn>
-                                                <TableColumn fx:id="commodityCostColumn" prefWidth="75.0" text="cost">
+                                                <TableColumn fx:id="commodityUnitColumn" prefWidth="160.0" text="单位">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="unit" />
+                                                    </cellValueFactory>
+
+                                                </TableColumn>
+                                                <TableColumn fx:id="commodityCostColumn" prefWidth="75.0" text="进货价格">
 
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="cost" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn fx:id="commodityQuantityColumn" prefWidth="75.0" text="quantity">
+                                                <TableColumn fx:id="commodityQuantityColumn" prefWidth="75.0" text="数量">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="quantity" />
                                                     </cellValueFactory>
                                                 </TableColumn>
 
-                                                <TableColumn prefWidth="75.0" text="total" />
+                                                <TableColumn prefWidth="75.0" text="金额" >
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="value" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
                                             </columns>
 
                                         </TableView>

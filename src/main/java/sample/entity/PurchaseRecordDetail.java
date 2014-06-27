@@ -3,6 +3,8 @@ package sample.entity;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -18,6 +20,11 @@ public class PurchaseRecordDetail {
     private final SimpleLongProperty quantity = new SimpleLongProperty();
     private final SimpleObjectProperty<Commodity> commodity = new SimpleObjectProperty<Commodity>();
     private final SimpleObjectProperty<PurchaseRecord> purchaseRecord = new SimpleObjectProperty<PurchaseRecord>();
+
+    //Transient Properties
+    private final SimpleStringProperty unit = new SimpleStringProperty();
+    private final SimpleStringProperty barcode = new SimpleStringProperty();
+    private final SimpleObjectProperty<BigDecimal> value = new SimpleObjectProperty<BigDecimal>();
 
 
     @Id
@@ -67,6 +74,47 @@ public class PurchaseRecordDetail {
         return quantity;
     }
 
+    @Transient
+    public String getUnit() {
+        return unit.get();
+    }
+    @Transient
+    public void setUnit(String unit) {
+        this.unit.set(unit);
+    }
+    @Transient
+    public SimpleStringProperty unitProperty() {
+        return unit;
+    }
+
+    @Transient
+    public String getBarcode() {
+        return barcode.get();
+    }
+    @Transient
+    public void setBarcode(String barcode) {
+        this.barcode.set(barcode);
+    }
+    @Transient
+    public SimpleStringProperty barcodeProperty() {
+        return barcode;
+    }
+
+    @Transient
+    public BigDecimal getValue() {
+        return value.get();
+    }
+@Transient
+    public void setValue(BigDecimal value) {
+        this.value.set(value);
+    }
+
+    @Transient
+    public SimpleObjectProperty<BigDecimal> valueProperty() {
+        return value;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,6 +145,7 @@ public class PurchaseRecordDetail {
 
     public void setCommodity(Commodity commodity) {
         this.commodity.set(commodity);
+        //bindValues();
     }
 
     @Transient
@@ -122,6 +171,8 @@ public class PurchaseRecordDetail {
 
 
     public PurchaseRecordDetail() {
+        bindValues();
+
     }
 
 
@@ -130,5 +181,31 @@ public class PurchaseRecordDetail {
         this.setCost(cost);
         this.setQuantity(quantity);
         this.setCommodity(commodity);
+        bindValues();
+    }
+
+    private void bindValues() {
+        commodityProperty().addListener(new ChangeListener<Commodity>() {
+            @Override
+            public void changed(ObservableValue<? extends Commodity> observable, Commodity oldValue, Commodity newValue) {
+                barcodeProperty().bind(getCommodity().barcodeProperty());
+                unitProperty().bind(getCommodity().unitProperty());
+                costProperty().addListener(new ChangeListener<BigDecimal>() {
+                    @Override
+                    public void changed(ObservableValue<? extends BigDecimal> observable, BigDecimal oldValue, BigDecimal newValue) {
+                        setValue(newValue.multiply(BigDecimal.valueOf(getQuantity())));
+                    }
+                });
+                quantityProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        setValue(getCost().multiply(BigDecimal.valueOf(getQuantity())));
+                    }
+                });
+                // Set initial value for cost...
+                setCost(newValue.getCost());
+            }
+        });
+
     }
 }

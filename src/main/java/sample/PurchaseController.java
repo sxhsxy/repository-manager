@@ -31,10 +31,13 @@ import sample.repository.PurchaseRecordRepository;
 import sample.repository.SupplierRepository;
 import sample.service.PurchaseService;
 import sample.util.SupplierStringConverter;
+
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -59,6 +62,10 @@ public class PurchaseController implements Initializable {
     @FXML private DatePicker dateStart;
     @FXML private DatePicker dateEnd;
     @FXML private VBox purchaseRecordDetail;
+    @FXML private Label supplierLabel;
+    @FXML private Label datetimeLabel;
+    @FXML private Label amountLabel;
+    @FXML private Label serialLabel;
 
     @Autowired private PurchaseRecordRepository purchaseRecordRepository;
     @Autowired private SupplierRepository supplierRepository;
@@ -69,6 +76,7 @@ public class PurchaseController implements Initializable {
 
     private PurchaseRecord purchaseRecordEditing;
     private List<PurchaseRecordDetail> purchaseRecordDetailsToDelete;
+    private PurchaseRecordDetail q;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,8 +114,17 @@ public class PurchaseController implements Initializable {
     public void refreshCommodityListTable() {
         PurchaseRecord p = purchaseTable.getSelectionModel().getSelectedItem();
         if(p!=null) {
-            ObservableList<PurchaseRecordDetail> detailList = FXCollections.observableArrayList(purchaseService.findPurchaseRecordEager(p).getPurchaseRecordDetails());
+            Collection<PurchaseRecordDetail> list = purchaseService.findPurchaseRecordEager(p).getPurchaseRecordDetails();
+            ObservableList<PurchaseRecordDetail> detailList = FXCollections.observableArrayList(list);
             commodityListTable.setItems(detailList);
+            serialLabel.setText(p.getId().toString());
+            supplierLabel.setText(p.getSupplier().toString());
+            datetimeLabel.setText(p.getDatetime().toString());
+            BigDecimal amount = BigDecimal.valueOf(0);
+            for (PurchaseRecordDetail q : list) {
+                amount = amount.add(q.getValue());
+            }
+            amountLabel.setText(amount.toString());
         }
 
     }
@@ -186,6 +203,7 @@ public class PurchaseController implements Initializable {
 
     public void addCommodity(ActionEvent actionEvent) {
         PurchaseRecordDetail p = new PurchaseRecordDetail();
+        q = p;
         commodityEditTable.getItems().add(p);
         int index = commodityEditTable.getItems().indexOf(p);
 
