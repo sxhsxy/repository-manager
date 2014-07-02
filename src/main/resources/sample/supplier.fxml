@@ -15,7 +15,7 @@
          <children>
             <HBox prefHeight="30.0" spacing="5.0" VBox.vgrow="NEVER">
                <children>
-                  <TextField HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="searchText" HBox.hgrow="ALWAYS" />
                 <Button mnemonicParsing="false" onAction="#search" text="查找" HBox.hgrow="NEVER">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0">
@@ -24,6 +24,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
+                   <Button onAction="#listAll" text="列出所有" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -21,6 +21,7 @@ import sample.repository.SupplierRepository;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -43,6 +44,7 @@ public class SupplierController implements Initializable {
     @FXML private Button cancel;
     @FXML private Button save;
     @FXML private VBox editBox;
+    @FXML private TextField searchText;
 
     private Supplier selected = null;
     private Supplier editOne = null;
@@ -55,8 +57,7 @@ public class SupplierController implements Initializable {
 
     private void initializeTable() {
 
-        final ObservableList<Supplier> data = FXCollections.observableArrayList(supplierRepository.findAll());
-        tableView.setItems(data);
+        listAll(null);
     }
 
     public void selectRow(Event event) {
@@ -145,6 +146,11 @@ public class SupplierController implements Initializable {
 
     public void search(ActionEvent actionEvent) {
         /* TODO 列表搜索功能*/
-        throw new NotImplementedException();
+        List<Supplier> list = supplierRepository.findByNameContaining(searchText.getText());
+        tableView.setItems(FXCollections.observableArrayList(list));
+    }
+
+    public void listAll(ActionEvent actionEvent) {
+        tableView.setItems(FXCollections.observableArrayList(supplierRepository.findAll()));
     }
 }

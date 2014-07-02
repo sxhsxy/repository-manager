@@ -4,9 +4,12 @@ import java.net.URL;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.util.Callback;
+import org.springframework.stereotype.Component;
+
 /**
  * Created by xiaohu on 14-6-3.
  */
+
 public abstract class FXMLView {
 
         public static final String DEFAULT_ENDING = "view";

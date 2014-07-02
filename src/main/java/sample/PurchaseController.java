@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.print.*;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.TextFieldListCell;
@@ -17,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.LongStringConverter;
+import org.controlsfx.control.PopOver;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -266,5 +268,11 @@ public class PurchaseController implements Initializable {
                     job.endJob();
                 }
             }
+    }
+
+    public void customSearch(ActionEvent actionEvent) {
+        PopOver popOver = new PopOver();
+        popOver.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
+        popOver.show((Node) actionEvent.getSource());
     }
 }

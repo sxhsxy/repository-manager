@@ -17,9 +17,12 @@ import java.util.ResourceBundle;
 public class MainFrameController implements Initializable {
     @FXML private BorderPane borderPane;
     @FXML private Pane centerPane;
+    private SupplierView supplierView;
+    private PurchaseView purchaseView;
 
     public void loadSupplierView(ActionEvent actionEvent) {
-        SupplierView supplierView = new SupplierView();
+//        SupplierView supplierView = new SupplierView();
+        if(supplierView == null) supplierView = new SupplierView();
         Pane pane = (Pane) supplierView.getRoot();
         centerPane.getChildren().clear();
         centerPane.getChildren().add(pane);
@@ -31,11 +34,14 @@ public class MainFrameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadPurchaseView(null);
+
+        loadSupplierView(null);
     }
 
     public void loadPurchaseView(ActionEvent actionEvent) {
-        PurchaseView purchaseView = new PurchaseView();
+//        PurchaseView purchaseView = new PurchaseView();
+        if (purchaseView == null) purchaseView = new PurchaseView();
+
         Pane pane = (Pane) purchaseView.getRoot();
         centerPane.getChildren().clear();
         centerPane.getChildren().add(pane);
