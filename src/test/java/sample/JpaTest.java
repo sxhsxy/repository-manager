@@ -26,6 +26,7 @@ import java.util.List;
  * Created by xiaohu on 14-6-12.
  */
 
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")
 public class JpaTest {

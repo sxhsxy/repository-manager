@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Created by xiaohu on 14-6-7.
  */
 @Entity
-@Table(name = "sale_record_detail", schema = "public", catalog = "javafxdb")
+@Table(name = "sale_record_detail")
 public class SaleRecordDetail {
     private Long id;
     private final SimpleObjectProperty<BigDecimal> price = new SimpleObjectProperty<BigDecimal>();

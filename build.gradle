@@ -17,6 +17,7 @@ version = '1.0'
 
 repositories {
     mavenLocal()
+    maven { url "http://maven.oschina.net/content/groups/public/" }
     maven { url "http://repo.spring.io/libs-snapshot" }
     mavenCentral()
 }
@@ -43,7 +44,7 @@ dependencies {
             'org.apache.taglibs:taglibs-standard:1.2.1'
     )
     runtime (
-            'org.postgresql:postgresql:9.3-1100-jdbc41'
+            'mysql:mysql-connector-java:5.1.34'
     )
     testCompile (
             "junit:junit:4.11"

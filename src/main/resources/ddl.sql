@@ -15,7 +15,7 @@ DROP TABLE commodity;
 
 
 CREATE TABLE  hibernate_sequence_table (
-  id bigserial NOT NULL,
+  id BIGINT NOT NULL,
   sequence_name varchar(255) NOT NULL,
   next_val bigint NOT NULL,
   PRIMARY KEY  (id)
@@ -94,7 +94,7 @@ CREATE TABLE purchase_record
 (
   id BIGINT,
   supplier_id BIGINT REFERENCES supplier(id),
-  datetime TIMESTAMPTZ,
+  datetime DATETIME,
   PRIMARY KEY (id)
 );
 
@@ -112,7 +112,7 @@ CREATE TABLE sale_record
 (
   id BIGINT,
   customer_id BIGINT REFERENCES customer(id),
-  datetime TIMESTAMPTZ,
+  datetime DATETIME,
   PRIMARY KEY (id)
 );
 

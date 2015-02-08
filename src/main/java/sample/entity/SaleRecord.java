@@ -11,7 +11,7 @@ import java.util.Collection;
  * Created by xiaohu on 14-6-7.
  */
 @Entity
-@Table(name = "sale_record", schema = "public", catalog = "javafxdb")
+@Table(name = "sale_record")
 public class SaleRecord {
     private final SimpleLongProperty id = new SimpleLongProperty();
     private final SimpleObjectProperty<Timestamp> datetime = new SimpleObjectProperty<Timestamp>();
